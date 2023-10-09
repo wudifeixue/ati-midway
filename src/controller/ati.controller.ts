@@ -22,4 +22,9 @@ export class AtiController {
   async setWorkMode(@Body() requestBody: { siteCode: string, workMode: string }): Promise<any> {
     return this.atiService.setWorkMode(requestBody.siteCode, requestBody.workMode);
   }
+
+  @Post('/postGridType')
+  async setGridType(@Body() requestBody: { siteCode: string, gridType: string }): Promise<any> {
+    return this.atiService.setGridType(requestBody.siteCode, requestBody.gridType);
+  }
 }

@@ -92,6 +92,33 @@ export class AtiService {
     } catch (error) {
       throw new AtiEmptyDataError(error);
     }
-  } 
+  }
 
+  // 设置电网类型
+  async setGridType(siteCode: string, gridType: string): Promise<any> {
+    if (!siteCode || !gridType) {
+      throw new AtiEmptyDataError();
+    }
+  
+    const config = {
+      method: 'post',
+      url: 'http://ems11api.ati-watt.com/device/setting',
+      headers: {
+        ...COMMON_HEADERS,
+        'Content-Type': 'application/json;charset=UTF-8'
+      },
+      data: {
+        siteCode,
+        type: 19,  // 此处固定为19
+        baseParam: gridType  // 使用传入的gridType
+      }
+    };
+  
+    try {
+      const response = await axios.request(config);
+      return response.data;
+    } catch (error) {
+      throw new AtiEmptyDataError(error);
+    }
+  }
 }
