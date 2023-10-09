@@ -1,5 +1,6 @@
 import { Configuration, App } from '@midwayjs/core';
 import * as koa from '@midwayjs/koa';
+import * as orm from '@midwayjs/typeorm';
 import { WeatherErrorFilter } from './filter/weather.filter';
 import * as validate from '@midwayjs/validate';
 import * as info from '@midwayjs/info';
@@ -12,6 +13,7 @@ import * as view from '@midwayjs/view-nunjucks';
 @Configuration({
   imports: [
     koa,
+    orm,
     validate,
     view,
     {
