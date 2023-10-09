@@ -14,6 +14,9 @@ dependencies:
   '@midwayjs/core':
     specifier: ^3.12.3
     version: 3.12.3
+  '@midwayjs/cross-domain':
+    specifier: ^3.12.5
+    version: 3.12.5
   '@midwayjs/decorator':
     specifier: ^3.12.3
     version: 3.12.3
@@ -977,6 +980,13 @@ packages:
       class-transformer: 0.5.1
       picomatch: 2.3.1
       reflect-metadata: 0.1.13
+    dev: false
+
+  /@midwayjs/cross-domain@3.12.5:
+    resolution: {integrity: sha512-Gj8VhMbh5o/TtY5mtidIswRe0YBXBcFso3B92GcVr4Md0uabFbOvd6DcUtn3DVmNQ2vOMm1D9pvcaH0KsunDNA==}
+    engines: {node: '>=12'}
+    dependencies:
+      vary: 1.1.2
     dev: false
 
   /@midwayjs/debugger@1.0.9:

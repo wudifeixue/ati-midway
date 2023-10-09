@@ -7,6 +7,7 @@
     "@midwayjs/axios": "3",
     "@midwayjs/bootstrap": "^3.12.5",
     "@midwayjs/core": "^3.12.3",
+    "@midwayjs/cross-domain": "^3.12.5",
     "@midwayjs/decorator": "^3.12.3",
     "@midwayjs/info": "^3.12.5",
     "@midwayjs/koa": "^3.12.3",

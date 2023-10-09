@@ -8,12 +8,14 @@ import { join } from 'path';
 // import { NotFoundFilter } from './filter/notfound.filter';
 import { ReportMiddleware } from './middleware/report.middleware';
 import * as axios from '@midwayjs/axios';
+import * as crossDomain from '@midwayjs/cross-domain';
 
 @Configuration({
   imports: [
     koa,
     validate,
     axios,
+    crossDomain,
     {
       component: info,
       enabledEnvironment: ['local'],
