@@ -6,7 +6,4 @@ export default {
   koa: {
     port: 7001,
   },
-  view: {
-    defaultViewEngine: 'nunjucks',
-  },
 } as MidwayConfig;
