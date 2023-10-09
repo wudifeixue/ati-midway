@@ -1,16 +1,19 @@
 import { Configuration, App } from '@midwayjs/core';
 import * as koa from '@midwayjs/koa';
+import { WeatherErrorFilter } from './filter/weather.filter';
 import * as validate from '@midwayjs/validate';
 import * as info from '@midwayjs/info';
 import { join } from 'path';
 // import { DefaultErrorFilter } from './filter/default.filter';
 // import { NotFoundFilter } from './filter/notfound.filter';
 import { ReportMiddleware } from './middleware/report.middleware';
+import * as view from '@midwayjs/view-nunjucks';
 
 @Configuration({
   imports: [
     koa,
     validate,
+    view,
     {
       component: info,
       enabledEnvironment: ['local'],
@@ -26,6 +29,7 @@ export class MainConfiguration {
     // add middleware
     this.app.useMiddleware([ReportMiddleware]);
     // add filter
-    // this.app.useFilter([NotFoundFilter, DefaultErrorFilter]);
+    this.app.useFilter([WeatherErrorFilter]);
   }
 }
+
