@@ -1,9 +1,9 @@
-// src/error/weather.error.ts
+// src/error/ati.error.ts
 import { MidwayError } from '@midwayjs/core';
 
-export class WeatherEmptyDataError extends MidwayError {
+export class AtiEmptyDataError extends MidwayError {
   constructor(err?: Error) {
-    super('weather data is empty', {
+    super('Ati data is empty', {
       cause: err,
     });
     if (err?.stack) {

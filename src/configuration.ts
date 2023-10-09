@@ -1,7 +1,6 @@
 import { Configuration, App } from '@midwayjs/core';
 import * as koa from '@midwayjs/koa';
-import * as orm from '@midwayjs/typeorm';
-import { WeatherErrorFilter } from './filter/weather.filter';
+import { AtiErrorFilter } from './filter/ati.filter';
 import * as validate from '@midwayjs/validate';
 import * as info from '@midwayjs/info';
 import { join } from 'path';
@@ -9,13 +8,14 @@ import { join } from 'path';
 // import { NotFoundFilter } from './filter/notfound.filter';
 import { ReportMiddleware } from './middleware/report.middleware';
 import * as view from '@midwayjs/view-nunjucks';
+import * as axios from '@midwayjs/axios';
 
 @Configuration({
   imports: [
     koa,
-    orm,
     validate,
     view,
+    axios,
     {
       component: info,
       enabledEnvironment: ['local'],
@@ -31,7 +31,7 @@ export class MainConfiguration {
     // add middleware
     this.app.useMiddleware([ReportMiddleware]);
     // add filter
-    this.app.useFilter([WeatherErrorFilter]);
+    this.app.useFilter([AtiErrorFilter]);
   }
 }
 

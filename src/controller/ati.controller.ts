@@ -1,11 +1,25 @@
-import { Controller, Get } from '@midwayjs/core';
+import { Controller, Get, Post, Body, Inject, Query } from '@midwayjs/core';
+import { BatteryEnergyInfo, DeviceInfo } from '../interface';
+import { AtiService } from '../service/ati.service';
 
 @Controller('/')
 export class AtiController {
-  // 这里是装饰器，定义一个路由
-  @Get('/ati')
-  async getWeatherInfo(): Promise<string> {
-    // 这里是 http 的返回，可以直接返回字符串，数字，JSON，Buffer 等
-    return 'Hello ATI!';
+
+  @Inject()
+  atiService: AtiService;
+
+  @Get('/getBatteryEnergy')
+  async getAtiInfo(@Query('siteCode') siteCode: string): Promise<BatteryEnergyInfo> {
+    return this.atiService.getBatteryEnergy(siteCode);
+  }
+
+  @Get('/getDeviceInfo')
+  async getDeviceInfo(@Query('sn') sn: string, @Query('siteCode') siteCode: string): Promise<DeviceInfo> {  // 假设你的DeviceInfo也使用AtiInfo接口
+    return this.atiService.getDeviceInfo(sn, siteCode);
+  }
+
+  @Post('/postWorkMode')
+  async setWorkMode(@Body() requestBody: { siteCode: string, workMode: string }): Promise<any> {
+    return this.atiService.setWorkMode(requestBody.siteCode, requestBody.workMode);
   }
 }
